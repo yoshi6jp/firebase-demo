@@ -86,7 +86,7 @@ $ npm install -g firebase-tools
 $ firebase init
 ```
 - Hostingを選択
-- プロジェクトを選択
+- プロジェクトを選択
 - public -> build
 
 ```
