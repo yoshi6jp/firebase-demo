@@ -42,8 +42,7 @@ class App extends Component {
       </div>
     </div>
   </form>
-  <Chart />
-
+  <Chart items={this.props.items} />
 </div>
     );
   }
@@ -79,6 +78,9 @@ class Chart extends React.Component {
         }
       }
     }
+    this.state = {
+      data: this.convertData([]) 
+    }
   }
   convertData(items){
     return {
@@ -89,10 +91,19 @@ class Chart extends React.Component {
       ]
     }
   }
+  componentDidMount() {
+    this.props.items.on('value', (ss)=> {
+      let items = Object.values(ss.val()||{})
+      let data = this.convertData(items)
+      this.setState({data})
+    })
+  }
+  componentWillUnmount() {
+    this.props.items.off()
+  }
   render() {
-    let data = this.convertData([]) 
     return (
-      <C3Chart data={data} axis={this.axis}/>
+      <C3Chart data={this.state.data} axis={this.axis}/>
     );
   }
 }

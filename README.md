@@ -69,4 +69,7 @@ export const config = {
   - index.js
   - App.js
 
+- データを取得
+  - App.js
+
 
