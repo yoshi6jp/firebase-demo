@@ -73,12 +73,24 @@ export const config = {
   - App.js
 
 # [Hosting](https://firebase.google.com/docs/hosting/)
+- build
+```
+$ npm run build
+```
+
 ```
 $ npm install -g firebase-tools
 ```
 
 ```
 $ firebase init
+```
+- Hostingを選択
+- プロジェクトを選択
+- public -> build
+
+```
+$ firebase deploy
 ```
 
 
