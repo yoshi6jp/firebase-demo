@@ -14,3 +14,9 @@
   - onChange
   - value
 - Chart Componetの追加
+
+## [react-c3js](https://www.npmjs.com/package/react-c3js)の追加
+```
+$ npm install --save react-c3js
+```
+- http://c3js.org/samples/timeseries.html

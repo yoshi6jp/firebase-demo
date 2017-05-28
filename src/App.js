@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import C3Chart from 'react-c3js';
+import 'c3/c3.css';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -67,13 +70,30 @@ class App extends Component {
 }
 
 class Chart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.axis = {
+      x: {
+        type: 'timeseries',
+        tick: {
+          format: '%Y-%m-%d'
+        }
+      }
+    }
+  }
+  convertData(items){
+    return {
+      x: "x",
+      columns: [
+        ['x',].concat(items.map(item => item.date)),
+        ['体重'].concat(items.map(item => item.weight))
+      ]
+    }
+  }
   render() {
+    let data = this.convertData(this.props.items) 
     return (
-      <ul>
-        {this.props.items.map(item => (
-          <li key={item.date}>{item.weight}</li>
-        ))}
-      </ul>
+      <C3Chart data={data} axis={this.axis}/>
     );
   }
 }
