@@ -49,4 +49,24 @@ export const config = {
 
 - consoleから認証の追加
 - 認証処理の追加
+# [Realtime Database](https://firebase.google.com/docs/database/web/start)の組み込み
+- [rule](https://firebase.google.com/docs/database/security/)の設定
+
+```json
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".write": "$uid === auth.uid",
+        ".read": "$uid === auth.uid"
+      }
+    }
+  }
+}
+```
+
+- データを保存
+  - index.js
+  - App.js
+
 

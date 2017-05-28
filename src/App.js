@@ -10,7 +10,6 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      items: [],
       date: '',
       weight: ''
     };
@@ -43,7 +42,7 @@ class App extends Component {
       </div>
     </div>
   </form>
-  <Chart items={this.state.items}/>
+  <Chart />
 
 </div>
     );
@@ -62,10 +61,10 @@ class App extends Component {
       weight
     }
     this.setState((prevState) => ({
-      items: prevState.items.concat(newItem),
       weight: '',
       date: ''
     }));
+    this.props.items.push(newItem)
   }
 }
 
@@ -91,7 +90,7 @@ class Chart extends React.Component {
     }
   }
   render() {
-    let data = this.convertData(this.props.items) 
+    let data = this.convertData([]) 
     return (
       <C3Chart data={data} axis={this.axis}/>
     );

@@ -10,7 +10,8 @@ firebase.initializeApp(config);
 let provider = new firebase.auth.GoogleAuthProvider();
 firebase.auth().onAuthStateChanged(function(user) {
   if(user){
-    ReactDOM.render(<App />, document.getElementById('root'));
+    let items = firebase.database().ref(`users/${user.uid}/items`)
+    ReactDOM.render(<App items={items} />, document.getElementById('root'));
     registerServiceWorker();
   }else{
     firebase.auth().signInWithRedirect(provider);
