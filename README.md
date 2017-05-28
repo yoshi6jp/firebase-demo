@@ -72,4 +72,13 @@ export const config = {
 - データを取得
   - App.js
 
+# [Hosting](https://firebase.google.com/docs/hosting/)
+```
+$ npm install -g firebase-tools
+```
+
+```
+$ firebase init
+```
+
 
