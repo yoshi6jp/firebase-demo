@@ -45,3 +45,8 @@ export const config = {
 ```
 - index.jsに組み込み
 
+# [google認証](https://firebase.google.com/docs/auth/web/google-signin)の追加
+
+- consoleから認証の追加
+- 認証処理の追加
+

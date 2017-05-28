@@ -7,5 +7,12 @@ import * as firebase from 'firebase';
 import {config} from './config'
 
 firebase.initializeApp(config);
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+let provider = new firebase.auth.GoogleAuthProvider();
+firebase.auth().onAuthStateChanged(function(user) {
+  if(user){
+    ReactDOM.render(<App />, document.getElementById('root'));
+    registerServiceWorker();
+  }else{
+    firebase.auth().signInWithRedirect(provider);
+  }
+})
